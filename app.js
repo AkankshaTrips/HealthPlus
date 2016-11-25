@@ -54,9 +54,9 @@ var insertDocuments = function(db, callback) {
 }
 /* testing ends */
 
-app.get('/nihanshu', function (req, res) {
-  res.send('index.html')
-})
+app.get('/nihu', function(req, res) {
+		res.sendfile('./public/index.html');
+	});
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
