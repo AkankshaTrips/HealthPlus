@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
 
 // define the schema for our user model
 var reportSchema = mongoose.Schema({
-    name       : String
-    age        : Number
-    height     : String
-    weight     : String
-    symptoms   : String
-    med        : String
+    name       : String,
+    age        : Number,
+    height     : String,
+    weight     : String,
+    symptoms   : String,
+    medicines  : String,
+    diagnosis  : String,
     created_at : Date
-    tests      : String
 
 });
 

@@ -16,39 +16,41 @@
   </div>
 
 <div class="container">
-  <form>
+  <form action="/doctor" method="post">
     <div class="form-group">
-      <label for="usr">Name:</label>
-      <input type="text" class="form-control" id="usr">
+        <label>Name:</label>
+        <input type="text" class="form-control" name="name">
     </div>
 
     <div class="form-group">
-      <label for="pwd">Age:</label>
-      <input type="age" class="form-control" id="age">
+        <label>Age:</label>
+        <input type="text" class="form-control" name="age">
     </div>
 
     <div class="form-group">
-      <label for="usr">Height:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Weight:</label>
-      <input type="age" class="form-control" id="age">
+        <label>Height:</label>
+        <input type="text" class="form-control" name="height">
     </div>
 
     <div class="form-group">
-      <label for="usr">Symptoms:</label>
-      <input type="text" class="form-control" id="usr">
+        <label>Weight:</label>
+        <input type="text" class="form-control" name="weight">
     </div>
     <div class="form-group">
-      <label for="pwd">Prescribed medication:</label>
-      <input type="age" class="form-control" id="age">
+        <label>Symptoms:</label>
+        <input type="text" class="form-control" name="symptoms">
     </div>
+
     <div class="form-group">
-      <label for="usr">Lab Report:</label>
-      <input type="text" class="form-control" id="usr">
+        <label>Prescribed medicines:</label>
+        <input type="text" class="form-control" name="medicines">
     </div>
-    <button type="submit" class="btn btn-warning btn-lg">Login</button>
+
+    <div class="form-group">
+        <label>Diagnosis</label>
+        <input type="text" class="form-control" name="diagnosis">
+    </div>
+    <button type="submit" class="btn btn-warning btn-lg">Submit</button>
   </form>
 </div>
 

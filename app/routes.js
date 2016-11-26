@@ -1,4 +1,5 @@
 /*eslint-env node */
+var Report = require('../app/models/report');
 module.exports = function(app, passport) {
 
     // =====================================
@@ -49,9 +50,31 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    app.post('/doctor', passport.authenticate('local-login', {
+    /*app.post('/doctor', passport.authenticate('local-doctor', {
         successRedirect : '/doctor', // redirect to the secure profile section
-    }));
+    }));*/
+    app.post('/doctor', function(req,res,done) {
+      var newReport = new Report();
+      newReport.name = req.body.name;
+      newReport.age = req.body.age;
+      newReport.height = req.body.height;
+      newReport.weight = req.body.weight;
+      newReport.symptoms = req.body.symptoms;
+      newReport.medicines = req.body.medicines;
+      newReport.diagnosis = req.body.diagnosis;
+      newReport.created_at = Date();
+
+      newReport.save(function(err) {
+        if (err)
+          throw err;
+        return done(null,newReport);
+      });
+      newReport.save;
+      //res.status(200).end();
+      //successRedirect : '/doctor' // redirect to the secure profile section
+      res.render('doctor.ejs', { message: req.flash('doctorForm') });
+
+    });
 
     // =====================================
     // PROFILE SECTION =====================
