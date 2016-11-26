@@ -22,14 +22,14 @@ var cfenv = require('cfenv');
 var appEnv = cfenv.getAppEnv();
 
 // MongoDB setup
- var MongoClient = require('mongodb').MongoClient
+ /*var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
- 
 
-// Connection URL 
+
+// Connection URL
 var url = 'mongodb://d8354849-9635-41a3-b1cc-5f70ba99090e:5452eaa4-d5b3-4c8f-8a08-a4273b51f377@23.246.199.101:10021/db';
 
-// Use connect method to connect to the Server 
+// Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
@@ -40,9 +40,9 @@ MongoClient.connect(url, function(err, db) {
 
 // Testing Database
 var insertDocuments = function(db, callback) {
-  // Get the documents collection 
+  // Get the documents collection
   var collection = db.collection('documents');
-  // Insert some documents 
+  // Insert some documents
   collection.insertMany([
     {a : 1}, {a : 2}, {a : 3}
   ], function(err, result) {
@@ -52,12 +52,7 @@ var insertDocuments = function(db, callback) {
     console.log("Inserted 3 documents into the document collection");
     callback(result);
   });
-}
-
-//app.get('/nihu', function(req, res) {
-//		res.sendfile('./public/index.html');
-//});
-
+}*/
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
@@ -107,4 +102,3 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
