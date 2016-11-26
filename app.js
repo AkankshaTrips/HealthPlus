@@ -70,10 +70,10 @@ var session      = require('express-session');
 
 
 // Line 77-81 is the database configuraion that has been commented out for now
-//var configDB = require('./config/database.js');
+var configDB = require('./config/database.js');
 
 // configuration ===============================================================
-//mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(configDB.url); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
