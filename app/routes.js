@@ -1,5 +1,6 @@
 /*eslint-env node */
 var Report = require('../app/models/report');
+var User = require('../app/models/user');
 module.exports = function(app, passport) {
 
     // =====================================
@@ -56,6 +57,7 @@ module.exports = function(app, passport) {
     app.post('/doctor', function(req,res,done) {
       var newReport = new Report();
       newReport.name = req.body.name;
+      newReport.patientID = req.body.patientID;
       newReport.age = req.body.age;
       newReport.height = req.body.height;
       newReport.weight = req.body.weight;
@@ -69,7 +71,28 @@ module.exports = function(app, passport) {
           throw err;
         return done(null,newReport);
       });
-      newReport.save;
+      //newReport.save;
+      User.findOne({ 'local.userID' :  req.body.patientID }, function(err, user) {
+            //if there are any errors, return the error
+                if (err) {
+                    return done(err);
+            }
+
+            // check to see if theres already a user with that ID
+            if (user) {
+                console.log(newReport._id);
+                console.log(user.local.userID);
+                user.local.reportID.push(newReport._id);
+                user.save(function(err) {
+                  if (err)
+                    throw err;
+                  return done(null,user);
+                });
+
+            } else {
+                //Delete the report object created if Patient is not found.
+            }
+        });
       //res.status(200).end();
       //successRedirect : '/doctor' // redirect to the secure profile section
       res.render('doctor.ejs', { message: req.flash('doctorForm') });
