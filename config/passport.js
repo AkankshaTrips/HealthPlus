@@ -60,10 +60,19 @@ module.exports = function(passport) {
                 // create the user
                 var newUser            = new User();
 
+                //Generate a 5-Digit ID for the user
+                var random_id = generateRandom();
+
+                //Check to see if the random ID already exists in the DB and get the final user ID
+                var user_id = userExists(random_id);
+             
+
+
                 // set the user's local credentials
                 newUser.local.email    = req.body.email;
                 newUser.local.password = newUser.generateHash(req.body.password);
                 newUser.local.userType = req.body.sel1;
+                newUser.local.userID   = user_id;
 
                 // save the user
                 newUser.save(function(err) {
@@ -113,5 +122,30 @@ module.exports = function(passport) {
         });
 
     }));
+
+    function generateRandom() {
+        var a = 10000;
+        var b = 99999;
+        var random_number = Math.floor((Math.random() * b) + a);
+        return random_number;
+    }
+
+    function userExists(user_id) {
+      User.findOne({ 'local.userID' :  user_id }, function(err, user) {
+            //if there are any errors, return the error
+                if (err) {
+                    return done(err);
+            }
+
+            // check to see if theres already a user with that ID
+            if (user) {
+                var newUser_id = generateRandom();
+                userExists(newUser_id);
+            } else {
+                return user_id;
+            }
+        });
+      return user_id;
+    }
 
 };
