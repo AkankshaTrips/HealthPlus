@@ -44,12 +44,41 @@ module.exports = function(app, passport) {
         res.render('doctor.ejs', { message: req.flash('doctorForm') });
     });
 
-    // process the signup form
+    app.get('/doctorProfile', isLoggedIn, function(req, res) {
+       res.render('doctorProfile.ejs', {
+           user : req.user // get the user out of session and pass to template
+       });
+    });
+
+    app.get('/patientProfile', isLoggedIn, function(req, res) {
+       res.render('patientProfile.ejs', {
+           user : req.user // get the user out of session and pass to template
+       });
+    });
+
+    /* // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
-    }));
+    })); */
+
+    app.post('/signup', passport.authenticate('local-signup', {failureRedirect: '/signup'}), function(req, res) {
+      console.log(req.body.email);
+      console.log(req.body.sel1);
+      if (req.body.sel1 == 1) {
+        console.log(req.body.sel1);
+        res.redirect('/doctorProfile');
+      }
+      else if (req.body.sel1 == 2) {
+        console.log(req.body.sel1);
+        res.redirect('/patientProfile');
+      }
+      else {
+        redirect('/');
+      }
+
+    });
 
     /*app.post('/doctor', passport.authenticate('local-doctor', {
         successRedirect : '/doctor', // redirect to the secure profile section
