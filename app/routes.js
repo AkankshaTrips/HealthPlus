@@ -21,11 +21,46 @@ module.exports = function(app, passport) {
     });
 
     // process the login form
-    app.post('/login', passport.authenticate('local-login', {
+    /*app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/profile', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
-    }));
+    }));*/
+
+    app.post('/login', passport.authenticate('local-login', {failureRedirect: '/login',failureFlash: true}), function(req, res) {
+      console.log(req.body.email);
+
+      User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
+            //if there are any errors, return the error
+                if (err) {
+                    return done(err);
+            }
+
+            // check to see if theres already a user with that ID
+            if (user) {
+                console.log(user.local.email);
+                console.log(user.local.userType);
+
+                if (user.local.userType == 1) {
+                  console.log(user.local.userType);
+                  res.redirect('/doctorProfile');
+                }
+                else if (user.local.userType == 2) {
+                  console.log(user.local.userType);
+                  res.redirect('/patientProfile');
+                }
+                else {
+                  res.redirect('/login');
+                }
+
+
+            } else {
+                //Delete the report object created if Patient is not found.
+                res.redirect('/login');
+            }
+        });
+
+      });
 
 
     // =====================================
@@ -75,7 +110,7 @@ module.exports = function(app, passport) {
         res.redirect('/patientProfile');
       }
       else {
-        redirect('/');
+        res.redirect('/');
       }
 
     });
