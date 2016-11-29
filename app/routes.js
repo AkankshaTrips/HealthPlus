@@ -73,10 +73,10 @@ module.exports = function(app, passport) {
         res.render('signup.ejs', { message: req.flash('signupMessage') });
     });
 
-    app.get('/doctor', function(req, res) {
+    app.get('/doctorReport', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('doctor.ejs', { message: req.flash('doctorForm') });
+        res.render('doctorReport.ejs', { message: req.flash('doctorForm') });
     });
 
     app.get('/doctorProfile', isLoggedIn, function(req, res) {
@@ -118,7 +118,7 @@ module.exports = function(app, passport) {
     /*app.post('/doctor', passport.authenticate('local-doctor', {
         successRedirect : '/doctor', // redirect to the secure profile section
     }));*/
-    app.post('/doctor', function(req,res,done) {
+    app.post('/doctorReport', function(req,res,done) {
       var newReport = new Report();
       newReport.name = req.body.name;
       newReport.patientID = req.body.patientID;
@@ -128,6 +128,7 @@ module.exports = function(app, passport) {
       newReport.symptoms = req.body.symptoms;
       newReport.medicines = req.body.medicines;
       newReport.diagnosis = req.body.diagnosis;
+      newReport.specialization = req.body.specialization;
       newReport.created_at = Date();
 
       newReport.save(function(err) {
@@ -159,7 +160,7 @@ module.exports = function(app, passport) {
         });
       //res.status(200).end();
       //successRedirect : '/doctor' // redirect to the secure profile section
-      res.render('doctor.ejs', { message: req.flash('doctorForm') });
+      res.render('doctorReport.ejs', { message: req.flash('doctorForm') });
 
     });
 
