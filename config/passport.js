@@ -39,7 +39,7 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) {
-        
+
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
@@ -65,10 +65,12 @@ module.exports = function(passport) {
 
                 //Check to see if the random ID already exists in the DB and get the final user ID
                 var user_id = userExists(random_id);
-             
+
 
 
                 // set the user's local credentials
+                newUser.local.firstName = req.body.firstName;
+                newUser.local.lastName = req.body.lastName;
                 newUser.local.email    = req.body.email;
                 newUser.local.password = newUser.generateHash(req.body.password);
                 newUser.local.userType = req.body.sel1;
@@ -82,7 +84,7 @@ module.exports = function(passport) {
                 });
             }
 
-        });    
+        });
 
         });
 
