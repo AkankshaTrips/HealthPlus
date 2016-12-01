@@ -120,7 +120,8 @@ module.exports = function(app, passport) {
     }));*/
     app.post('/doctorReport', function(req,res,done) {
       var newReport = new Report();
-      newReport.name = req.body.name;
+      newReport.firstName = req.body.firstName;
+      newReport.lastName = req.body.lastName;
       newReport.patientID = req.body.patientID;
       newReport.age = req.body.age;
       newReport.height = req.body.height;
