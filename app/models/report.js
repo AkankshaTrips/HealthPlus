@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 // define the schema for our user model
 var reportSchema = mongoose.Schema({
-    name       		: String,
+    firstName     : String,
+    lastName      : String,
     patientID  		: Number,
     age        		: Number,
     height     		: String,
@@ -10,7 +11,7 @@ var reportSchema = mongoose.Schema({
     symptoms   		: String,
     medicines  		: String,
     diagnosis  		: String,
-    specialization	: String, 
+    specialization	: String,
     created_at 		: Date
 
 });
