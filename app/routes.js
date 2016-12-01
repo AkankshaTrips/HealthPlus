@@ -41,11 +41,11 @@ module.exports = function(app, passport) {
                 console.log(user.local.email);
                 console.log(user.local.userType);
 
-                if (user.local.userType == 1) {
+                if (user.local.userType == "Doctor") {
                   console.log(user.local.userType);
                   res.redirect('/doctorProfile');
                 }
-                else if (user.local.userType == 2) {
+                else if (user.local.userType == "Patient") {
                   console.log(user.local.userType);
                   res.redirect('/patientProfile');
                 }
@@ -101,11 +101,11 @@ module.exports = function(app, passport) {
     app.post('/signup', passport.authenticate('local-signup', {failureRedirect: '/signup'}), function(req, res) {
       console.log(req.body.email);
       console.log(req.body.sel1);
-      if (req.body.sel1 == 1) {
+      if (req.body.sel1 == "Doctor") {
         console.log(req.body.sel1);
         res.redirect('/doctorProfile');
       }
-      else if (req.body.sel1 == 2) {
+      else if (req.body.sel1 == "Patient") {
         console.log(req.body.sel1);
         res.redirect('/patientProfile');
       }
@@ -160,7 +160,7 @@ module.exports = function(app, passport) {
         });
       //res.status(200).end();
       //successRedirect : '/doctor' // redirect to the secure profile section
-      res.render('doctorReport.ejs', { message: req.flash('doctorForm') });
+      res.render('doctorProfile.ejs', { message: req.flash('Report submitted successfully!') });
 
     });
 
