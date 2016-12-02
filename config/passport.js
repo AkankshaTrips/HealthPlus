@@ -127,9 +127,9 @@ module.exports = function(passport) {
     }));
 
     function generateRandom() {
-        var a = 10000;
-        var b = 99999;
-        var random_number = Math.floor((Math.random() * b) + a);
+        var min = 10000;
+        var max = 99999;
+        var random_number = Math.floor(Math.random() * max) + min;
         return random_number;
     }
 
