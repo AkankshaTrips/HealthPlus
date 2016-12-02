@@ -7,29 +7,43 @@
     <style>
         body        { padding-top:80px; word-wrap:break-word; }
     </style>
+    <style>
+    body {
+        background-image:url("http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
 </head>
 <body>
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Hello Doctor!</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+
+        <h1><span class="fa fa-user"></span> Hello Doctor!</h1>
+        <style>
+          h1 {
+            font-size: 5em;
+          }
+        </style>
     </div>
 
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Manage </h3>
-                    <a href="/doctorReport" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus"></span> Create Report</a>
-                    <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-edit"></span> Update Report</a>
-                    <span>(Tentative feature -- as soon as the doctor enters the patient unique id we will retrieve the latest patient report)</span>
-            </div>
-        </div>
+        <div class="col-sm-6 col-sm-offset-3">
 
-    </div>
+                <h2 align = "center">MANAGE: </h2>
+                  <br><br>
+                    <a href="/doctorReport" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> CREATE REPORT</a>
+                    <a style="float: right;" href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-edit"></span> UPDATE REPORT</a>
 
+
+
+    <br><br><br><br><br>
+<a style="float: right;" href="/logout" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-off"></span> LOGOUT</a>
+</div>
+</div>
 </div>
 </body>
 </html>
