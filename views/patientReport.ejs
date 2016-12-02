@@ -7,46 +7,76 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      background-image:url("https://t4.ftcdn.net/jpg/01/02/38/81/240_F_102388139_rtVqDX699aEwgH7yqwiyoRjk1iD6tsjb.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  </style>
 </head>
 <body>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Report patient view</h3>
-    </div>
+  <br>
+  <h1 align = "center"> <span class="glyphicon glyphicon-list-alt"></span> REPORT</h1>
+  <style>
+  h1 {
+    font-size: 3em;
+  }
+  </style>
+  </div>
     <div class="panel-body">
-      <div class = "row ">
-      <label>Name: <%- report.firstName %> <%- report.lastName %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Age: <%- report.age %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Height: <%- report.height %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Weight: <%- report.weight %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Symptoms: <%- report.symptoms %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Diagnosis: <%- report.diagnosis %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Medication: <%- report.medicines %></label>
-      </div>
-      
-      <div class = "row ">
-      <label>Date: <%- report.created_at %></label>
-      </div>
-    </div>
+      <div class="col-sm-6 col-sm-offset-3">
+
+      <table style="width:100%">
+        <tr>
+          <td><b>NAME</b></td>
+          <td><%- report.firstName %> <%- report.lastName %></td>
+        </tr>
+        <tr>
+          <td><b>AGE</b></td>
+          <td><%- report.age %> years</td>
+        </tr>
+        <tr>
+          <td><b>HEIGHT</b></td>
+          <td><%- report.height %> feet</td>
+        </tr>
+        <tr>
+          <td><b>WEIGHT</b></td>
+          <td><%- report.weight %> kilograms</td>
+        </tr>
+        <tr>
+          <td><b>SYMPTOMS</b></td>
+          <td><%- report.symptoms %></td>
+        </tr>
+        <tr>
+          <td><b>DIAGNOSIS</b></td>
+          <td><%- report.diagnosis %></td>
+        </tr>
+        <tr>
+          <td><b>MEDICINES</b></td>
+          <td><%- report.medicines %></td>
+        </tr>
+        <tr>
+          <td><b>DATE</b></td>
+          <td><%- report.created_at %></td>
+        </tr>
+      </table>
+      <style>
+      table {
+          border-collapse: collapse;
+          width: 100%;
+      }
+
+      td, th {
+          border: 3px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #d6d4d4;
+      }
+      </style>
   </div>
 </body>
 </html>
