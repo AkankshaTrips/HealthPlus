@@ -91,6 +91,22 @@ module.exports = function(app, passport) {
        });
     });
 
+    //var mongoose = require('mongoose');
+    //var Report = mongoose.model('Report', reportSchema);
+
+    
+
+    app.get('/patientReport/:id/:key', isLoggedIn, function(req, res) {
+        Report.find({'patientID': req.params.id}, 'firstName lastName age height weight symptoms medicines diagnosis specialization created_at' , function(err, report) {
+          if (report) {
+            //console.log('%s %s has symptoms %s ',report.firstName, report.lastName, report.symptoms)
+            //console.log(req.params.id)
+            res.render('patientReport.ejs', {
+             report : report[req.params.key]
+            });
+          }
+        })   
+    });
     /* // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
