@@ -7,9 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <div class="navbar-header">
-  <nav class="navbar navbar-default navbar-inverse" role="navigation">
-  </div>
 </head>
 <!-- <body background="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRYNDVjJ_qADFBdz0j5sHgIy7gb4LORK6VoN9UMvlSDRG4o8ph3Ow"> -->
 <style>
@@ -18,12 +15,16 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-html {
-    height: 150%
-}
+
 </style>
   <div class="container">
-      <h1 style = "font-family:lato", align = "center"><b>PATIENT FORM</b></h1>
+      <h1 align = "center"><span class="glyphicon glyphicon-file"></span> Patient Form</h1>
+      <style>
+        h1 {
+          font-size: 5em;
+        }
+      </style>
+      <br>
   </div>
 
 <div class="container">
@@ -43,7 +44,7 @@ html {
 
 	<div class = "col-sm-4">
  	<label>PATIENT ID:</label>
- 	<input type="text" name="patientID" placeholder="6 digit pin" class="form-control"> <br> <br>
+ 	<input type="text" name="patientID" placeholder="5 digit pin" class="form-control"> <br> <br>
 	</div>
 	</div>
 
