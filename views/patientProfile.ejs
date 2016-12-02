@@ -7,21 +7,32 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      background-image:url("http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  </style>
 
 </head>
 <body>
-
-
-<div class="panel panel-default">
   <div class="panel-heading">
-    <a href="/logout" class="btn btn-success btn-sm pull-right">Logout</a>
-    <h3 class="panel-title">Welcome <%- user.local.firstName %>, Your unique patient Id is <%- user.local.userID %></h3>
-  </div>
-
+    <div class = "row">
+      <div class = "col-sm-4 col-xs-4">
+    <p class="panel-title"><b>Welcome <%- user.local.firstName %><b></p>
+    </div>
+    <div class = "col-sm-4 col-xs-4">
+    </div>
+    <div class = "col-sm-4">
+    <p class="panel-title" align = "right"> <b>Patient ID: <%- user.local.userID %><b></p>
+      <br>
+</div>
+</div>
 
   <div class="list-group">
   <a href="#" class="list-group-item active">
-    Reports:
+    REPORTS:
   </a>
   <% for (var i = 0; i < user.local.reportID.length; i++) { %>
     <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- i+1 %> </a>
@@ -32,4 +43,10 @@
 
 </div>
 </body>
+
+  <div class="col-sm-6 col-sm-offset-3">
+    <p align="right">
+<a href="/logout" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-off"></span> Logout</a>
+</p>
+</div>
 </html>
