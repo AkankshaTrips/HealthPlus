@@ -94,7 +94,7 @@ module.exports = function(app, passport) {
     //var mongoose = require('mongoose');
     //var Report = mongoose.model('Report', reportSchema);
 
-    
+
 
     app.get('/patientReport/:id/:key', isLoggedIn, function(req, res) {
         Report.find({'patientID': req.params.id}, 'firstName lastName age height weight symptoms medicines diagnosis specialization created_at' , function(err, report) {
@@ -105,7 +105,7 @@ module.exports = function(app, passport) {
              report : report[req.params.key]
             });
           }
-        })   
+        })
     });
     /* // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
@@ -147,12 +147,6 @@ module.exports = function(app, passport) {
       newReport.diagnosis = req.body.diagnosis;
       newReport.specialization = req.body.specialization;
       newReport.created_at = Date();
-
-      newReport.save(function(err) {
-        if (err)
-          throw err;
-        return done(null,newReport);
-      });
       //newReport.save;
       User.findOne({ 'local.userID' :  req.body.patientID }, function(err, user) {
             //if there are any errors, return the error
@@ -162,8 +156,11 @@ module.exports = function(app, passport) {
 
             // check to see if theres already a user with that ID
             if (user) {
-                console.log(newReport._id);
-                console.log(user.local.userID);
+              newReport.save(function(err) {
+                if (err)
+                  throw err;
+                return done(null,newReport);
+              });
                 user.local.reportID.push(newReport._id);
                 user.save(function(err) {
                   if (err)
