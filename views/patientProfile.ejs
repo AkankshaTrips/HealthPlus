@@ -36,6 +36,7 @@
   </a>
   <% for (var i = 0; i < user.local.reportID.length; i++) { %>
     <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- i+1 %> </a>
+    <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span>Delete </a></font>
   <% } %>
 
 </div>

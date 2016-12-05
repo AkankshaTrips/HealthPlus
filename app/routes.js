@@ -107,6 +107,29 @@ module.exports = function(app, passport) {
           }
         })
     });
+
+    app.get('/patientReportDel/:id/:key', isLoggedIn, function(req, res, done) {
+        Report.find({'patientID': req.params.id}, 'firstName lastName age height weight symptoms medicines diagnosis specialization created_at' , function(err, report) {
+          if (report) {
+            //console.log('%s %s has symptoms %s ',report.firstName, report.lastName, report.symptoms)
+            //console.log(req.params.id)
+            report[req.params.key].remove( function (err) {
+              if (err) throw err;
+  // collection is now empty but not deleted
+            });
+            req.user.local.reportID.splice(req.params.key,1);
+            req.user.save(function(err) {
+                if (err)
+                    throw err;
+                return done(null, req.user);
+            });
+
+            res.render('patientProfile.ejs', {
+             user: req.user
+            });
+          }
+        })
+    });
     /* // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
