@@ -44,16 +44,11 @@
   </div>
 
 <div class="row" id="categories">
-  <div id = "table-wrapper"class ="col-xs-12 col-md-6 col-sm-6">
-    <h4>Report Categories</h4>
+  <div id = "table-wrapper" class ="col-xs-12 col-md-6 col-sm-6">
+    <h4 align = "center">REPORT CATEGORIES</h4>
+    <br>
     <div id="table-scroll">
-      <table class="table table-bordered;">
-      <thead>
-        <tr>
-          <th>Category</th>
-        </tr>
-      </thead>
-
+      <table>
       <tbody>
           <tr>
             <td><a href="#" onclick='return show(event);'>Cardiologist</a></td>
@@ -72,136 +67,139 @@
           </tr>
       </tbody>
     </table>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+      text-align: center;
+        padding: 6px;
+    }
+    </style>
     </div>
   </div>
 
-
   <div class="child" id="Cardiologist" class="row">
-      <h4>Cardiologist</h4>
+      <h4 align = "center">CARDIOLOGIST</h4>
+      <br>
       <div class ="col-xs-12 col-md-6">
         <table class= "table table-bordered" id="hiddentable" >
-          <thead>
-            <tr>
-              <th>Reports</th>
-            </tr>
-          </thead>
           <tbody>
             <% var counter = 0;
             for (var i = 0; i < report.length; i++) {
               console.log(report[i].specialization);
                 if (report[i].specialization == "Cardiologist") { %>
-                  <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
-                  <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span></a></font>
 
-              <%counter=counter+1;  } %>
-            <% } %>
+                        <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
+
+                <%
+                counter=counter+1;
+                }
+               }
+               if (counter == 0) { %>
+                 <h4 align = "center" style="color:#908A89;">No Reports</h4>
+               <% } %>
           </tbody>
         </table>
       </div>
     </div>
 
     <div class="child" id="Dentist" class="row">
-        <h4>Dentist</h4>
+        <h4 align = "center">DENTIST</h4>
+        <br>
         <div class ="col-xs-12 col-md-6">
           <table class= "table table-bordered" id="hiddentable" >
-            <thead>
-              <tr>
-                <th>Reports</th>
-              </tr>
-            </thead>
             <tbody>
               <% var counter = 0;
               for (var i = 0; i < report.length; i++) {
                 console.log(report[i].specialization);
                   if (report[i].specialization == "Dentist") { %>
-                    <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
-                    <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span> </a></font>
+                        <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
 
-                <%counter=counter+1;  } %>
-              <% } %>
+                <%
+                counter=counter+1;
+                }
+               }
+               if (counter == 0) { %>
+                 <h4 align = "center" style="color:#908A89;">No Reports</h4>
+               <% } %>
             </tbody>
           </table>
         </div>
       </div>
 
       <div class="child" id="Neurologist" class="row">
-          <h4>Neurologist</h4>
+          <h4 align = "center">NEUROLOGIST</h4>
+          <br>
           <div class ="col-xs-12 col-md-6">
             <table class= "table table-bordered" id="hiddentable" >
-              <thead>
-                <tr>
-                  <th>Reports</th>
-                </tr>
-              </thead>
               <tbody>
                 <% var counter = 0;
                 for (var i = 0; i < report.length; i++) {
                   console.log(report[i].specialization);
                     if (report[i].specialization == "Neurologist") { %>
-                      <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
-                      <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span></a></font>
-
-                  <%counter=counter+1;  } %>
-                <% } %>
+                        <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
+                  <%
+                  counter=counter+1;
+                  }
+                 }
+                 if (counter == 0) { %>
+                   <h4 align = "center" style="color:#908A89;">No Reports</h4>
+                 <% } %>
               </tbody>
             </table>
           </div>
         </div>
 
         <div class="child" id="ENT Specialist" class="row">
-            <h4>ENT Specialist</h4>
+            <h4 align = "center">ENT SPECIALIST</h4>
+            <br>
             <div class ="col-xs-12 col-md-6">
               <table class= "table table-bordered" id="hiddentable" >
-                <thead>
-                  <tr>
-                    <th>Reports</th>
-                  </tr>
-                </thead>
                 <tbody>
                   <% var counter = 0;
                   for (var i = 0; i < report.length; i++) {
                     console.log(report[i].specialization);
                       if (report[i].specialization == "ENT_Specialist") { %>
                         <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
-                        <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span>Delete </a></font>
 
-                    <%counter=counter+1;  } %>
-                  <% } %>
+                    <%
+                    counter=counter+1;
+                    }
+                   }
+                   if (counter == 0) { %>
+                     <h4 align = "center" style="color:#908A89;">No Reports</h4>
+                   <% } %>
                 </tbody>
               </table>
             </div>
           </div>
 
-
           <div class="child" id="Gastroenterologist" class="row">
-              <h4>Gastroenterologist</h4>
+              <h4 align = "center">GASTROENTEROLOGIST</h4>
+              <br>
               <div class ="col-xs-12 col-md-6">
                 <table class= "table table-bordered" id="hiddentable" >
-                  <thead>
-                    <tr>
-                      <th>Reports</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     <% var counter = 0;
                     for (var i = 0; i < report.length; i++) {
                       console.log(report[i].specialization);
                         if (report[i].specialization == "Gastroenterologist") { %>
-                          <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
-                          <a  href="/patientReportDel/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="btn btn-sm"><font color="red"><span class="glyphicon glyphicon-trash"></span>Delete </a></font>
+                        <a  href="/patientReport/" onclick="location.href=this.href+ <%= user.local.userID%>+'/'+ <%= i%>;return false;" class="list-group-item list-group-item-action">Report <%- counter+1 %> </a>
 
-                      <%counter=counter+1;  } %>
-                    <% } %>
+                      <%
+                      counter=counter+1;
+                      }
+                     }
+                     if (counter == 0) { %>
+                       <h4 align = "center" style="color:#908A89;">No Reports</h4>
+                     <% } %>
                   </tbody>
                 </table>
               </div>
             </div>
-
-
-
-
-
-
 </div>
 
 <script>
