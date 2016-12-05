@@ -86,9 +86,24 @@ module.exports = function(app, passport) {
     });
 
     app.get('/patientProfile', isLoggedIn, function(req, res) {
-       res.render('patientProfile.ejs', {
-           user : req.user // get the user out of session and pass to template
-       });
+
+      var newReport = new Report();
+      Report.find({'patientID': req.user.local.userID}, 'firstName lastName age height weight symptoms medicines diagnosis specialization created_at' , function(err, reports) {
+        if (reports) {
+          //console.log('%s %s has symptoms %s ',report.firstName, report.lastName, report.symptoms)
+          //console.log(req.params.id)
+          res.render('patientProfile.ejs', {
+            user : req.user,
+           report : reports
+          });
+        }
+        else {
+          res.render('patientProfile.ejs', {
+              user : req.user, // get the user out of session and pass to template
+              report : newReport
+          });
+        }
+      })
     });
 
     //var mongoose = require('mongoose');
@@ -173,9 +188,12 @@ module.exports = function(app, passport) {
       //newReport.save;
       User.findOne({ 'local.userID' :  req.body.patientID }, function(err, user) {
             //if there are any errors, return the error
-                if (err) {
-                    return done(err);
-            }
+            if(err) {
+              console.log(err);
+              res.send({
+                message :'something went wrong'
+              });
+        }
 
             // check to see if theres already a user with that ID
             if (user) {
